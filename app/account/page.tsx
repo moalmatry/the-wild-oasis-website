@@ -5,5 +5,9 @@ export const metadata = {
 };
 
 export default function AccountPage() {
-  return <h1>About The Wild Oasis</h1>;
+  return (
+    <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+      Welcome Mohamed
+    </h2>
+  );
 }
