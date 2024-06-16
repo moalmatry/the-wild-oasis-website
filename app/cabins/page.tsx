@@ -5,6 +5,10 @@ interface Username {
   id: string;
 }
 
+export const metadata = {
+  title: "Cabins",
+};
+
 export default function CabinsPage() {
   return (
     <div>
