@@ -16,6 +16,10 @@ export interface CabinCardProps {
 
 //**  CabinPage  **
 
+export interface CabinIdPageProps {
+  params: { cabinId: string };
+}
+
 export type Cabin = {
   created_at: string;
   description: string | null;
