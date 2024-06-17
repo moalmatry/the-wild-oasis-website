@@ -1,7 +1,7 @@
 import React from "react";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { getCabin } from "@/app/_lib/data-service";
+import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { CabinIdPageProps } from "@/types";
 
 export async function generateMetadata({ params }: CabinIdPageProps) {
@@ -10,6 +10,14 @@ export async function generateMetadata({ params }: CabinIdPageProps) {
     title: `Cabin ${cabin?.name} | The Wild Oasis`,
     description: cabin?.description,
   };
+}
+
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+
+  const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
+
+  return ids;
 }
 
 export default async function CabinIdPage({ params }: CabinIdPageProps) {
