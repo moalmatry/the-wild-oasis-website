@@ -6,7 +6,6 @@ import { CabinIdPageProps } from "@/types";
 
 export async function generateMetadata({ params }: CabinIdPageProps) {
   const cabin = await getCabin(params.cabinId);
-
   return {
     title: `Cabin ${cabin?.name} | The Wild Oasis`,
     description: cabin?.description,
@@ -15,6 +14,7 @@ export async function generateMetadata({ params }: CabinIdPageProps) {
 
 export default async function CabinIdPage({ params }: CabinIdPageProps) {
   const cabin = await getCabin(params.cabinId);
+  if (!cabin) throw new Error("cabin not found please enter valid url ");
 
   return (
     <div className="max-w-6xl mx-auto mt-8">
