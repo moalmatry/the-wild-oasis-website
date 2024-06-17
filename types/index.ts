@@ -2,7 +2,19 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
-// **  supabase types  **
+//** CabinCard types  **
+export interface CabinCardProps {
+  cabin: {
+    id: number;
+    name: string | null;
+    maxCapacity: number | null;
+    regularPrice: number | null;
+    discount: number | null;
+    image: string | null;
+  };
+}
+
+//**  supabase types  **
 
 export type Json =
   | string
