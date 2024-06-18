@@ -31,6 +31,15 @@ export type Cabin = {
   regularPrice: number | null;
 } | null;
 
+//**  Filter Component  **
+
+export interface FilterButtonProps {
+  filter: string;
+  handleFilter: (filter: string) => void;
+  activeFilter: string;
+  children: string;
+}
+
 //**  supabase types  **
 
 export type Json =
