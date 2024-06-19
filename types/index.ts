@@ -39,6 +39,28 @@ export interface SelectCountryProps {
   id: string;
   className: string;
 }
+
+export interface Settings {
+  breakfastPrice: number | null;
+  created_at: string;
+  id: number;
+  maxBookingLength: number | null;
+  maxGuestsPerBooking: number | null;
+  minBookingLength: number | null;
+}
+
+export interface DateSelectorProps {
+  settings: Settings;
+  cabin: Cabin;
+  bookedDates: Date[];
+}
+
+export interface ReservationFormProps {
+  cabin: Cabin;
+}
+
+export interface CabinProps extends ReservationFormProps {}
+
 //**  SelectCountry  **
 export interface UpdateProfileProps extends LayoutProps {}
 
