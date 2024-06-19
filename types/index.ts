@@ -31,6 +31,17 @@ export type Cabin = {
   regularPrice: number | null;
 } | null;
 
+//**  ProfilePage  **
+//**  SelectCountry  **
+export interface SelectCountryProps {
+  defaultCountry: string;
+  name: string;
+  id: string;
+  className: string;
+}
+//**  SelectCountry  **
+export interface UpdateProfileProps extends LayoutProps {}
+
 //**  Filter Component  **
 
 export interface FilterButtonProps {

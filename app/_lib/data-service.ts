@@ -136,7 +136,13 @@ export const getCabins = async function () {
 //   return data;
 // }
 
-export async function getCountries() {
+type GetCountries = {
+  name: string;
+  flag: string;
+  independent: boolean;
+};
+
+export async function getCountries(): Promise<GetCountries[]> {
   try {
     const res = await fetch(
       "https://restcountries.com/v2/all?fields=name,flag"
