@@ -95,7 +95,9 @@ export const getCabins = async function () {
 //   return data;
 // }
 
-export async function getBookedDatesByCabinId(cabinId: number | undefined) {
+export async function getBookedDatesByCabinId(
+  cabinId: number | undefined | string
+) {
   let today: string | Date = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
