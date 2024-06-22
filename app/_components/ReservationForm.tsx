@@ -1,8 +1,11 @@
+"use client";
 import { Cabin, ReservationFormProps } from "@/types";
 import React from "react";
+import { useReservation } from "@/app/_context/ReservationContext";
 
 function ReservationForm({ cabin }: ReservationFormProps) {
   // CHANGE
+  const { range } = useReservation();
   const maxCapacity = cabin?.maxCapacity ?? 0;
 
   return (
@@ -21,6 +24,10 @@ function ReservationForm({ cabin }: ReservationFormProps) {
           <p>{user.name}</p>
         </div> */}
       </div>
+
+      <p>
+        {String(range?.from)} | {String(range?.to)}
+      </p>
 
       <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
         <div className="space-y-2">

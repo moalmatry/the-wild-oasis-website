@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
+import { DateRange } from "react-day-picker";
+
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -72,6 +75,16 @@ export interface FilterButtonProps {
   activeFilter: string;
   children: string;
 }
+
+//** ReservationContext **
+
+export interface ReservationContextType {
+  range: DateRange | undefined;
+  setRange: Dispatch<SetStateAction<DateRange | undefined>>;
+  resetRange: () => void;
+}
+
+export interface ReservationProviderProps extends LayoutProps {}
 
 //**  supabase types  **
 
