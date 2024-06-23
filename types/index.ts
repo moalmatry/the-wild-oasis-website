@@ -1,4 +1,3 @@
-import { User } from "next-auth";
 import { Dispatch, SetStateAction } from "react";
 import { DateRange } from "react-day-picker";
 
@@ -87,6 +86,25 @@ export interface ReservationContextType {
 }
 
 export interface ReservationProviderProps extends LayoutProps {}
+
+// ** NextAuth **
+
+type ISODateString = string;
+
+export interface DefaultSession {
+  user?: User;
+  expires: ISODateString;
+}
+
+export interface Session extends DefaultSession {}
+
+export interface User {
+  id?: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  guestId?: string;
+}
 
 //**  supabase types  **
 
