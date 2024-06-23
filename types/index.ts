@@ -1,3 +1,4 @@
+import { User } from "next-auth";
 import { Dispatch, SetStateAction } from "react";
 import { DateRange } from "react-day-picker";
 
@@ -60,6 +61,7 @@ export interface DateSelectorProps {
 
 export interface ReservationFormProps {
   cabin: Cabin;
+  user: User | undefined;
 }
 
 export interface CabinProps extends ReservationFormProps {}

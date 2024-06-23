@@ -2,8 +2,9 @@
 import { Cabin, ReservationFormProps } from "@/types";
 import React from "react";
 import { useReservation } from "@/app/_context/ReservationContext";
+import Image from "next/image";
 
-function ReservationForm({ cabin }: ReservationFormProps) {
+function ReservationForm({ cabin, user }: ReservationFormProps) {
   // CHANGE
   const { range } = useReservation();
   const maxCapacity = cabin?.maxCapacity ?? 0;
@@ -13,16 +14,19 @@ function ReservationForm({ cabin }: ReservationFormProps) {
       <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
         <p>Logged in as</p>
 
-        {/* <div className='flex gap-4 items-center'>
-          <img
-            // Important to display google profile images
-            referrerPolicy='no-referrer'
-            className='h-8 rounded-full'
-            src={user.image}
-            alt={user.name}
-          />
-          <p>{user.name}</p>
-        </div> */}
+        <div className="flex gap-4 items-center">
+          <div className="h-9 w-9 overflow-hidden rounded-full relative">
+            <Image
+              // Important to display google profile images
+              referrerPolicy="no-referrer"
+              className="h-8 rounded-full"
+              src={user?.image || ""}
+              alt={user?.name || "user"}
+              fill
+            />
+          </div>
+          <p>{user?.name}</p>
+        </div>
       </div>
 
       <p>
