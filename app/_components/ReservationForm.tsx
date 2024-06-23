@@ -1,6 +1,6 @@
 "use client";
-import { Cabin, ReservationFormProps } from "@/types";
 import React from "react";
+import { Cabin, ReservationFormProps } from "@/types";
 import { useReservation } from "@/app/_context/ReservationContext";
 import Image from "next/image";
 
