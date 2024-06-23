@@ -19,7 +19,6 @@ export interface CabinsPageProps {
 }
 
 export default function CabinsPage({ searchParams }: CabinsPageProps) {
-  console.log(searchParams);
   const filter = searchParams?.capacity ?? "all";
   return (
     <div>
