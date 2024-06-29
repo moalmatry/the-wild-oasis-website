@@ -1,11 +1,17 @@
 import SelectCountry from "@/app/_components/SelectCountry";
 import UpdateProfile from "@/app/_components/UpdateProfileForm";
+import { auth } from "@/app/_lib/authentication/auth";
+import { getGuest } from "@/app/_lib/data-service";
+import { Session } from "@/types";
 
 export const metadata = {
   title: "Update profile",
 };
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const session: Session | null = await auth();
+  const guest = await getGuest(session?.user?.email ?? "");
+
   const nationality = "portugal";
   return (
     <div>
@@ -19,12 +25,12 @@ export default function ProfilePage() {
       </p>
 
       {/* we did that because both SelectCountry & Profile page are server components */}
-      <UpdateProfile>
+      <UpdateProfile guest={guest}>
         <SelectCountry
           name="nationality"
           id="nationality"
           className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-          defaultCountry={nationality}
+          defaultCountry={guest?.nationality || ""}
         />
       </UpdateProfile>
     </div>

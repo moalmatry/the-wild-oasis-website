@@ -66,7 +66,17 @@ export interface ReservationFormProps {
 export interface CabinProps extends ReservationFormProps {}
 
 //**  SelectCountry  **
-export interface UpdateProfileProps extends LayoutProps {}
+export interface UpdateProfileProps extends LayoutProps {
+  guest: {
+    countryFlag: string | null;
+    created_at: string;
+    email: string | null;
+    fullName: string | null;
+    id: number;
+    nationalID: string | null;
+    nationality: string | null;
+  } | null;
+}
 
 //**  Filter Component  **
 
