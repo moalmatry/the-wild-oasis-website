@@ -1,8 +1,8 @@
 "use server";
-
 import { auth, signIn, signOut } from "@/app/_lib/authentication/auth";
 import { supabase } from "../supabase";
 import { revalidatePath } from "next/cache";
+import { getBookings } from "../data-service";
 
 export async function updateGuest(formData: FormData) {
   // console.log(formData);
@@ -38,6 +38,27 @@ export async function updateGuest(formData: FormData) {
 
   revalidatePath("/account/profile");
   console.log(data);
+}
+
+export async function deleteReservation(bookingId: string) {
+  const session: any = await auth();
+  const guestId = session?.user?.guestId || "";
+
+  if (!session) throw new Error("You must be logged in");
+
+  const guestBooking = await getBookings(guestId);
+  const guestBookingIds = guestBooking.map((booking) => booking.id);
+
+  if (!guestBookingIds.includes(+bookingId))
+    throw new Error("you are not allowed to delete this booking");
+  const { data, error } = await supabase
+    .from("bookings")
+    .delete()
+    .eq("id", bookingId);
+
+  if (error) throw new Error("Booking could not be deleted");
+
+  revalidatePath("/account/reservations");
 }
 
 export async function signInAction() {
