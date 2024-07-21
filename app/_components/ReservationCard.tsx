@@ -21,9 +21,10 @@ interface ReservationCardProps {
     created_at: string | null;
     cabins: { name: string | null; image: string | null } | null;
   } | null;
+  onDelete: (bookingId: string) => Promise<void>;
 }
 
-function ReservationCard({ booking }: ReservationCardProps) {
+function ReservationCard({ booking, onDelete }: ReservationCardProps) {
   return (
     <div className="flex border border-primary-800">
       <div className="relative h-32 aspect-square">
@@ -85,7 +86,10 @@ function ReservationCard({ booking }: ReservationCardProps) {
               <PencilSquareIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
               <span className="mt-1">Edit</span>
             </Link>
-            <DeleteReservation bookingId={String(booking?.id)} />
+            <DeleteReservation
+              onDelete={onDelete}
+              bookingId={String(booking?.id)}
+            />
           </>
         )}
       </div>

@@ -1,4 +1,5 @@
 import ReservationCard from "@/app/_components/ReservationCard";
+import ReservationList from "@/app/_components/ReservationList";
 import { auth } from "@/app/_lib/authentication/auth";
 import { getBookings } from "@/app/_lib/data-service";
 
@@ -11,10 +12,7 @@ export default async function ReservationPage() {
   const session: any = await auth();
   const guestId = session.user.guestId || "";
 
-  console.log(guestId);
   const bookings = await getBookings(guestId);
-
-  console.log(bookings);
 
   return (
     <div>
@@ -31,9 +29,7 @@ export default async function ReservationPage() {
         </p>
       ) : (
         <ul className="space-y-6">
-          {bookings.map((booking) => (
-            <ReservationCard booking={booking} key={booking.id} />
-          ))}
+          <ReservationList bookings={bookings} />
         </ul>
       )}
     </div>
